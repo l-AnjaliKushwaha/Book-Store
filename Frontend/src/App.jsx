@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-     <nav>Site Logo</nav>
+     <Navbar></Navbar>
      <Outlet/>
     </>
   )
