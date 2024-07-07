@@ -94,9 +94,19 @@ async function run() {
       res.send(result);
     });
 
+    // find by category
+    app.get("/book-category", async (req, res) => {
+      let query = {};
+      if(req.query?.category){
+        query = {catch: req.query.category}
+      }
+      const result = await bookCollections.find(query).toArray();
+      res.send(result);
+    });
+
     await client.db("admin").command({ ping: 1 });
     console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
+      "You successfully connected to MongoDB!"
     );
   } finally {
     // Ensures that the client will close when you finish/error
@@ -106,5 +116,5 @@ async function run() {
 run().catch(console.dir);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 });
