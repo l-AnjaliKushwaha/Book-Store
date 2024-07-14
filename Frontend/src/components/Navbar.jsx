@@ -38,13 +38,13 @@ function Navbar() {
   ];
 
   return (
-    <header>
+    <header className="w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300">
       <nav
         className={`fixed top-0 w-full ${
-          isSticky ? "bg-white shadow-md" : "bg-transparent"
+          isSticky ? "bg-blue-300 shadow-md" : "bg-transparent"
         } transition-all duration-300`}
       >
-        <div className="container mx-auto flex items-center justify-between p-4">
+        <div className="container mx-auto flex items-center justify-between p-4 text-base">
           {/* logo */}
           <Link
             to="/"
@@ -86,12 +86,12 @@ function Navbar() {
         {/* mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-white">
-            <ul className="flex flex-col space-y-4 p-4">
+            <ul className="flex flex-col space-y-4 px-4 mt-7 p-4 bg-blue-700">
               {navItems.map(({ link, path }) => (
                 <li key={path}>
                   <Link
                     to={path}
-                    className="text-base text-black uppercase cursor-pointer hover:text-blue-700"
+                    className="text-base text-black uppercase cursor-pointer hover:text-blue-700 text-white"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link}
