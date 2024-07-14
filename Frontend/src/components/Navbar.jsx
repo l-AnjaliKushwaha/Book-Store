@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 // react icons
-import {FaBlog } from "react-icons/fa6";
+import { FaBarsStaggered, FaBlog, FaXmark } from "react-icons/fa6";
 
 function Navbar() {
-  const [isMenuOpen, seIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setSticky] = useState(false);
 
-  //toggle menu
+  // toggle menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
-      if(window.scrollY > 100){
+      if (window.scrollY > 100) {
         setSticky(true);
-      }
-      else{
+      } else {
         setSticky(false);
       }
-    }
-    window.addEventListener('scroll', handleScroll);
+    };
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-       window.addEventListener("scroll", handleScroll);
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // navItems here
   const navItems = [
@@ -39,14 +39,71 @@ function Navbar() {
 
   return (
     <header>
-      <nav>
-        <div>
+      <nav
+        className={`fixed top-0 w-full ${
+          isSticky ? "bg-white shadow-md" : "bg-transparent"
+        } transition-all duration-300`}
+      >
+        <div className="container mx-auto flex items-center justify-between p-4">
           {/* logo */}
-          <Link to="/"><FaBlog/>Books</Link>
+          <Link
+            to="/"
+            className="text-2xl font-bold text-blue-700 flex items-center gap-2"
+          >
+            <FaBlog className="inline-block" />
+            Books
+          </Link>
+
+          {/* nav item for large devices */}
+          <ul className="hidden md:flex space-x-12">
+            {navItems.map(({ link, path }) => (
+              <li key={path}>
+                <Link
+                  to={path}
+                  className="text-base text-black uppercase cursor-pointer hover:text-blue-700"
+                >
+                  {link}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* menu btn for mobile devices */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-black focus:outline-none"
+            >
+              {isMenuOpen ? (
+                <FaXmark className="h-5 w-5 text-black" />
+              ) : (
+                <FaBarsStaggered className="h-5 w-5 text-black" />
+              )}
+            </button>
+          </div>
         </div>
+
+        {/* mobile menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white">
+            <ul className="flex flex-col space-y-4 p-4">
+              {navItems.map(({ link, path }) => (
+                <li key={path}>
+                  <Link
+                    to={path}
+                    className="text-base text-black uppercase cursor-pointer hover:text-blue-700"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </nav>
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
