@@ -21,20 +21,16 @@ function BannerCard() {
         modules={[EffectCards]}
         className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 1</SwiperSlide>
+        <SwiperSlide></SwiperSlide>
+        <SwiperSlide></SwiperSlide>
+        <SwiperSlide></SwiperSlide>
+        <SwiperSlide></SwiperSlide>
+        <SwiperSlide></SwiperSlide>
+        <SwiperSlide></SwiperSlide>
+        <SwiperSlide></SwiperSlide>
+        <SwiperSlide></SwiperSlide>
+        <SwiperSlide></SwiperSlide>
+        <SwiperSlide></SwiperSlide>
 
       </Swiper>
     </div>
