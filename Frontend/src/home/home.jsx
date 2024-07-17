@@ -1,7 +1,7 @@
 // Home.js
 import React from "react";
-import Banner from "../components/Banner";
-import FavoriteBooks from "../components/FavoriteBooks";
+import Banner from "../components/Banner.jsx";
+import FavoriteBooks from "../home/FavoriteBooks.jsx"
 
 const Home = () => {
   return (
